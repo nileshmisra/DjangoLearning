@@ -1,0 +1,58 @@
+
+<!-- here we will display dynamic data that is been send from view function using context 
+so we will use jinja to display dynamic data -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django3</title>
+    <style>
+            table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    }
+    </style>
+</head>
+<body>
+    <!-- header data -->
+    <h1>Welcome to first project</h1>
+    <hr>
+
+    <!-- to display table data  -->
+    <thead>User Data</thead>
+    <br><br>
+    <table class="container">
+        <tr>
+            <th>sr. no</th>
+            <th>name</th>
+            <th>age</th>
+            <th>can vote</th>
+        </tr>
+        {% for data in peoples%}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.age}}</td>
+            <td {% if data.age < 12 %} style="background-color: red;" {% endif %}>
+                {% if data.age >= 12%}
+                yes
+                {% else %}
+                no
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <hr>
+
+    <!-- to display complete text data -->
+    <p>{{text}}</p>
+    <!-- to slice and display text data -->
+    <p>{{text|truncatechars:20}}</p>
+    <br>
+    <hr>
+    
+</body>
+</html>

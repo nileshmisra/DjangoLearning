@@ -1,0 +1,42 @@
+orm
+
+1. create
+1.1     a=Student.objects.create(name="nilesh",age=28,email="nilesh.misra@gmail.com",address="thane") 
+        >>> a
+        <Student: Student object (1)>
+        >>> a=Student.objects.all()
+        >>> a
+        <QuerySet [<Student: Student object (1)>]>
+        >>> a[0].name
+        'nilesh'
+
+1.2     >>> a=Student(name="nk",age=28,email="nk@gmail.com",address="ghatkopar")
+        >>> a.save()
+
+1.3     >>> dict1={"name":"nk2","age":28,"email":"nk@gmail.com","address":"ghatkopar"} 
+        >>> a=Student(**dict1)                                                  
+        >>> a.save()
+============================================================================================================================
+2.Read
+2.1     >>> a=Student.objects.all()
+        >>> a
+        <QuerySet [<Student: nilesh>, <Student: nk>, <Student: nk2>]>
+
+2.2     >>> a=Student.objects.get(id=1)
+        >>> a
+        <Student: nilesh>
+
+2.3     >>> a=Student.objects.filter(id=1) 
+        >>> a
+        <QuerySet [<Student: nilesh>]>
+===============================================================================================================================
+3.Update
+3.1     >>> a=Student.objects.get(id=1)                         
+        >>> a.age=29   // update age
+        >>> a.save()
+
+3.2     
+
+===============================================================================================================================
+4 Delete
+4.1     >>> a=Student.objects.get(id=1).delete()
